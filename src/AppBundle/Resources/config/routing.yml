@@ -1,6 +1,6 @@
 app_index:
     path: /
-    defaults: { _controller: AppBundle:Authentication:index }
+    defaults: { _controller: AppBundle:Default:index }
     
 YML_Auth:
     resource: "@AppBundle/Resources/config/routing/authentication.yml"
@@ -17,3 +17,4 @@ YML_Teacher:
 YML_Student:
     resource: "@AppBundle/Resources/config/routing/student.yml"
     prefix: /student
+    
