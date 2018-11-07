@@ -17,4 +17,8 @@ YML_Teacher:
 YML_Student:
     resource: "@AppBundle/Resources/config/routing/student.yml"
     prefix: /student
+   
+app_test_admin:
+    path: /test/admin
+    defaults: { _controller: AppBundle:Test:testAdmin }
     

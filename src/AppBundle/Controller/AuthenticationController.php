@@ -14,9 +14,16 @@ class AuthenticationController extends Controller {
 //
 //        $authenticationUtils = $this->get('security.authentication_utils');
 //        $error = $authenticationUtils->getLastAuthenticationError();
-//        //$lastUsername = $authenticationUtils->getLastUsername();
+        //$lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('AppBundle:Default:index.html.twig');
+    }
+
+    public function loginAction(Request $request) {
+        if ($this->getUser()) {
+            return $this->render("AppBundle:Layout:templateAdmin.html.twig", []);
+        }
+        return $this->render("AppBundle:Default:index.html.twig");
     }
 
 }

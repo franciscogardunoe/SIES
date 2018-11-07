@@ -1,2 +1,7 @@
-## YAML Template.
----
+app_users:
+    path: /admin/dashboard
+    defaults: { _controller:AppBundle:Admin:dashboard }
+    
+app_users:
+    path: /admin/subject
+    defaults: { _controller:AppBundle:Admin:subject }
