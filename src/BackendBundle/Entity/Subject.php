@@ -17,7 +17,7 @@ class Subject
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -59,9 +59,7 @@ class Subject
     /**
      * @var \Typesubject
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Typesubject")
+     * @ORM\ManyToOne(targetEntity="Typesubject")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type", referencedColumnName="id")
      * })
@@ -69,20 +67,6 @@ class Subject
     private $type;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Subject
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -221,7 +205,7 @@ class Subject
      *
      * @return Subject
      */
-    public function setType(\BackendBundle\Entity\Typesubject $type)
+    public function setType(\BackendBundle\Entity\Typesubject $type = null)
     {
         $this->type = $type;
 

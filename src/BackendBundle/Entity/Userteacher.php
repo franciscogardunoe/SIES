@@ -17,16 +17,14 @@ class Userteacher
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \Profession
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Profession")
+     * @ORM\ManyToOne(targetEntity="Profession")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="profession", referencedColumnName="id")
      * })
@@ -36,9 +34,7 @@ class Userteacher
     /**
      * @var \Typeteacher
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Typeteacher")
+     * @ORM\ManyToOne(targetEntity="Typeteacher")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type", referencedColumnName="id")
      * })
@@ -48,9 +44,7 @@ class Userteacher
     /**
      * @var \User
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id")
      * })
@@ -58,20 +52,6 @@ class Userteacher
     private $user;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Userteacher
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -90,7 +70,7 @@ class Userteacher
      *
      * @return Userteacher
      */
-    public function setProfession(\BackendBundle\Entity\Profession $profession)
+    public function setProfession(\BackendBundle\Entity\Profession $profession = null)
     {
         $this->profession = $profession;
 
@@ -114,7 +94,7 @@ class Userteacher
      *
      * @return Userteacher
      */
-    public function setType(\BackendBundle\Entity\Typeteacher $type)
+    public function setType(\BackendBundle\Entity\Typeteacher $type = null)
     {
         $this->type = $type;
 
@@ -138,7 +118,7 @@ class Userteacher
      *
      * @return Userteacher
      */
-    public function setUser(\BackendBundle\Entity\User $user)
+    public function setUser(\BackendBundle\Entity\User $user = null)
     {
         $this->user = $user;
 

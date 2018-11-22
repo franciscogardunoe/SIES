@@ -32,6 +32,8 @@ class Assignmentsubject
      * @var \DateTime
      *
      * @ORM\Column(name="dateEnd", type="date", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $dateend;
 
@@ -45,9 +47,7 @@ class Assignmentsubject
     /**
      * @var \Subject
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Subject")
+     * @ORM\ManyToOne(targetEntity="Subject")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="subject", referencedColumnName="id")
      * })
@@ -169,7 +169,7 @@ class Assignmentsubject
      *
      * @return Assignmentsubject
      */
-    public function setSubject(\BackendBundle\Entity\Subject $subject)
+    public function setSubject(\BackendBundle\Entity\Subject $subject = null)
     {
         $this->subject = $subject;
 

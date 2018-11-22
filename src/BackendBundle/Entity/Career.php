@@ -17,7 +17,7 @@ class Career
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -45,9 +45,7 @@ class Career
     /**
      * @var \Area
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Area")
+     * @ORM\ManyToOne(targetEntity="Area")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="area", referencedColumnName="id")
      * })
@@ -55,20 +53,6 @@ class Career
     private $area;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Career
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -159,7 +143,7 @@ class Career
      *
      * @return Career
      */
-    public function setArea(\BackendBundle\Entity\Area $area)
+    public function setArea(\BackendBundle\Entity\Area $area = null)
     {
         $this->area = $area;
 

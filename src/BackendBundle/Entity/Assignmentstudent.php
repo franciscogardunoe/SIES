@@ -17,16 +17,14 @@ class Assignmentstudent
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \Group
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Group")
+     * @ORM\ManyToOne(targetEntity="Group")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="group", referencedColumnName="id")
      * })
@@ -36,9 +34,7 @@ class Assignmentstudent
     /**
      * @var \User
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="student", referencedColumnName="id")
      * })
@@ -46,20 +42,6 @@ class Assignmentstudent
     private $student;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Assignmentstudent
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -78,7 +60,7 @@ class Assignmentstudent
      *
      * @return Assignmentstudent
      */
-    public function setGroup(\BackendBundle\Entity\Group $group)
+    public function setGroup(\BackendBundle\Entity\Group $group = null)
     {
         $this->group = $group;
 
@@ -102,7 +84,7 @@ class Assignmentstudent
      *
      * @return Assignmentstudent
      */
-    public function setStudent(\BackendBundle\Entity\User $student)
+    public function setStudent(\BackendBundle\Entity\User $student = null)
     {
         $this->student = $student;
 

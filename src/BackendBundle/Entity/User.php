@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"email"})}, indexes={@ORM\Index(name="fk_User_Role1_idx", columns={"role"}), @ORM\Index(name="fk_User_CivilStatus1_idx", columns={"civil"})})
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"email"}), @ORM\UniqueConstraint(name="curp_UNIQUE", columns={"curp"}), @ORM\UniqueConstraint(name="imss_UNIQUE", columns={"imss"})}, indexes={@ORM\Index(name="fk_User_Role1_idx", columns={"role"}), @ORM\Index(name="fk_User_CivilStatus1_idx", columns={"civil"})})
  * @ORM\Entity
  */
 class User
@@ -17,7 +17,7 @@ class User
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -101,9 +101,7 @@ class User
     /**
      * @var \Civilstatus
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Civilstatus")
+     * @ORM\ManyToOne(targetEntity="Civilstatus")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="civil", referencedColumnName="id")
      * })
@@ -113,9 +111,7 @@ class User
     /**
      * @var \Role
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Role")
+     * @ORM\ManyToOne(targetEntity="Role")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="role", referencedColumnName="id")
      * })
@@ -123,20 +119,6 @@ class User
     private $role;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return User
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -419,7 +401,7 @@ class User
      *
      * @return User
      */
-    public function setCivil(\BackendBundle\Entity\Civilstatus $civil)
+    public function setCivil(\BackendBundle\Entity\Civilstatus $civil = null)
     {
         $this->civil = $civil;
 
@@ -443,7 +425,7 @@ class User
      *
      * @return User
      */
-    public function setRole(\BackendBundle\Entity\Role $role)
+    public function setRole(\BackendBundle\Entity\Role $role = null)
     {
         $this->role = $role;
 

@@ -1,7 +1,11 @@
-app_users:
-    path: /admin/dashboard
-    defaults: { _controller:AppBundle:Admin:dashboard }
+app_admin_teacher:
+    path: /teacher
+    defaults: { _controller: AppBundle:Admin/Teacher:teacher }
     
-app_users:
-    path: /admin/subject
-    defaults: { _controller:AppBundle:Admin:subject }
+app_admin_teacher_delete:
+    path: /teacher/delete/{id}
+    defaults: { _controller: AppBundle:Admin/Teacher:deleteTeacher }
+    
+app_admin_teacher_update:
+    path: /teacher/update/{id}
+    defaults: { _controller: AppBundle:Admin/Teacher:updateTeacher }

@@ -25,6 +25,8 @@
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "nzo/url-encryptor-bundle": "dev-master",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },

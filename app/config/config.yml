@@ -68,3 +68,21 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+#NZO ENcryptor
+nzo_url_encryptor:
+    secret_key: YourSecretEncryptKey 
+    secret_iv: YourIvEncryptKey
+    cipher_algorithm: aes-256-ctr
+    
+# KNP Pagination
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+        sort_field_name: sort
+        sort_direction_name: direction
+        distinct: true
+    template:
+        pagination: AppBundle:Layout:twitter_bootstrap_v4_pagination.html.twig
+        sortable: KnpPaginationBundle:Pagination:sortable_link.html.twig

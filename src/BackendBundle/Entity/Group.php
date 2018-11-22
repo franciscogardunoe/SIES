@@ -17,7 +17,7 @@ class Group
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -59,9 +59,7 @@ class Group
     /**
      * @var \Career
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Career")
+     * @ORM\ManyToOne(targetEntity="Career")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="career", referencedColumnName="id")
      * })
@@ -71,9 +69,7 @@ class Group
     /**
      * @var \User
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tutor", referencedColumnName="id")
      * })
@@ -81,20 +77,6 @@ class Group
     private $tutor;
 
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     *
-     * @return Group
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get id
@@ -233,7 +215,7 @@ class Group
      *
      * @return Group
      */
-    public function setCareer(\BackendBundle\Entity\Career $career)
+    public function setCareer(\BackendBundle\Entity\Career $career = null)
     {
         $this->career = $career;
 
@@ -257,7 +239,7 @@ class Group
      *
      * @return Group
      */
-    public function setTutor(\BackendBundle\Entity\User $tutor)
+    public function setTutor(\BackendBundle\Entity\User $tutor = null)
     {
         $this->tutor = $tutor;
 
